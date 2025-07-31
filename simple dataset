@@ -1,0 +1,32 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+tiger = sns.load_dataset('iris')
+
+print(tiger.head())
+print(tiger.info())
+print(tiger.describe())
+
+plt.figure(figsize=(6, 4))
+sns.countplot(data=tiger, x='species')
+plt.title("Count of Each Iris Species")
+plt.tight_layout()
+plt.show()
+
+sns.pairplot(tiger, hue='species')
+plt.suptitle("Pairplot of Iris Features", y=1.02)
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(tiger.corr(numeric_only=True), annot=True, cmap='viridis', fmt=".2f")
+plt.title("Correlation Heatmap of Iris Features")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.boxplot(data=tiger, x='species', y='sepal_length')
+plt.title("Sepal Length Distribution by Species")
+plt.tight_layout()
+plt.show()
